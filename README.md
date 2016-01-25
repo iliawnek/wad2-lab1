@@ -1,3 +1,3 @@
-# UoG-WAD2-Tango-with-Django
+# Rango
 
 Code for [Tango with Django tutorial](http://www.tangowithdjango.com/).
