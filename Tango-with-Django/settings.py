@@ -48,9 +48,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'Rango2.urls'
+ROOT_URLCONF = 'Tango-with-Django.urls'
 
-WSGI_APPLICATION = 'Rango2.wsgi.application'
+WSGI_APPLICATION = 'Tango-with-Django.wsgi.application'
 
 
 # Database
