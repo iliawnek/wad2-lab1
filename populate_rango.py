@@ -9,8 +9,8 @@ from rango.models import Category, Page
 
 def populate():
     python_cat = add_cat(name="Python",
-                         likes=64,
-                         views=128)
+                         likes=64333,
+                         views=1282571)
 
     add_page(cat=python_cat,
              title="Official Python Tutorial",
@@ -25,8 +25,8 @@ def populate():
              url="http://www.korokithakis.net/tutorials/python/")
 
     django_cat = add_cat(name="Django",
-                         likes=32,
-                         views=64)
+                         likes=32212,
+                         views=254754)
 
     add_page(cat=django_cat,
              title="Official Django Tutorial",
@@ -41,8 +41,8 @@ def populate():
              url="http://www.tangowithdjango.com/")
 
     frame_cat = add_cat(name="Other Frameworks",
-                        likes=16,
-                        views=32)
+                        likes=165123,
+                        views=322456)
 
     add_page(cat=frame_cat,
              title="Bottle",
