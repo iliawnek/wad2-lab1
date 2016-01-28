@@ -51,10 +51,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-TEMPLATE_DIRS = (
-    TEMPLATE_PATH,
-)
-
 ROOT_URLCONF = 'tango-with-django.urls'
 
 WSGI_APPLICATION = 'tango-with-django.wsgi.application'
@@ -82,6 +78,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# Templates
+
+TEMPLATE_DIRS = (
+    TEMPLATE_PATH,
+)
 
 
 # Static files (CSS, JavaScript, Images)
