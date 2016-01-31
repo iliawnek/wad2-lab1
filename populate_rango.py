@@ -52,6 +52,10 @@ def populate():
              title="Flask",
              url="http://flask.pocoo.org")
 
+    cat_cat = add_cat(name="Cats",
+                      likes=10,
+                      views=11)
+
     # Print out what we have added to the user.
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):

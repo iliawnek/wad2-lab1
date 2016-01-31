@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% if category %}
+                {{ category_name }}
+            {% else %}
+                Error!
+            {% endif %}
+        </title>
+    </head>
+
+    <body>
+        {% if category %}
+            <h1><a href="/rango/">Top Categories</a>
+                →
+                {{ category_name }}
+            </h1>
+            {% if pages %}
+                <ul>
+                    {% for page in pages %}
+                        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                There are no pages currently in this category.
+            {% endif %}
+        {% else %}
+            The {{ category_name }} category does not exist!
+        {% endif %}
+    </body>
+
+</html>
