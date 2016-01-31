@@ -8,8 +8,10 @@ from rango.models import *
 def index(request):
     context_dict = {}
 
-    category_list = Category.objects.order_by('-likes')[:5]
-    context_dict['categories'] = category_list
+    category_list_likes = Category.objects.order_by('-likes')[:5]
+    context_dict['categories_by_likes'] = category_list_likes
+    category_list_views = Category.objects.order_by('-views')[:5]
+    context_dict['categories_by_views'] = category_list_views
 
     return render(request, 'rango/index.html', context_dict)
 
