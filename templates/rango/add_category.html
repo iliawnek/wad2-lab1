@@ -15,8 +15,15 @@
                 New category
         </h1>
 
-        <form id="category_form" method="post" action="/rango/add_category">
+        <form id="category_form" method="post" action="/rango/add_category/">
+            <!-- cross-site request forgery token
+                 for security; required by Django -->
             {% csrf_token %}
+
+            {% for field in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
             {% for field in form.visible_fields %}
                 {{ field.errors }}
                 {{ field.help_text }}
