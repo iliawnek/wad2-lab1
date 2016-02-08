@@ -60,6 +60,19 @@ def add_category(request):
 def add_page(request, category_name_slug):
     context_dict = {}
 
+    # adds category related info to context_dict
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+        context_dict['category'] = category
+        context_dict['category_name'] = category.name
+
+        pages = Page.objects.filter(category=category)
+        context_dict['pages'] = pages
+
+    except Category.DoesNotExist:
+        pass
+
+    # handles form
     if request.method == 'POST':
         form = PageForm(request.POST)
 
