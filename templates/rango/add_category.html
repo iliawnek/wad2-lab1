@@ -20,9 +20,9 @@
                  for security; required by Django -->
             {% csrf_token %}
 
-            {% for field in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
+{#            {% for field in form.hidden_fields %}#}
+{#                {{ hidden }}#}
+{#            {% endfor %}#}
 
             {% for field in form.visible_fields %}
                 {{ field.errors }}
