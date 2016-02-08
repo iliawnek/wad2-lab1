@@ -22,7 +22,7 @@ def about(request):
 
 
 def category(request, category_name_slug):
-    context_dict = {}
+    context_dict = {'slug': category_name_slug}
 
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -55,3 +55,22 @@ def add_category(request):
 
     context_dict['form'] = form
     return render(request, 'rango/add_category.html', context_dict)
+
+
+def add_page(request, category_name_slug):
+    context_dict = {}
+
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return category(request, category_name_slug)
+        else:
+            print form.errors
+
+    else:
+        form = PageForm()
+
+    context_dict['form'] = form
+    return render(request, 'rango/add_page.html', context_dict)
