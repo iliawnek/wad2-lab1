@@ -5,29 +5,40 @@
     <head>
         <meta charset="UTF-8">
         <title>
-            Rango → Add page
+            {% if category %}
+                Rango → Add page to {{ category_name }}
+            {% else %}
+                Rango → Error!
+            {% endif %}
         </title>
     </head>
 
     <body>
-        <h1><a href="/rango/">Rango</a>
-                →
-                Add page
-        </h1>
+        {% if category %}
+            <h1><a href="/rango/">Rango</a>
+                    →
+                    Add page to {{ category_name }}
+            </h1>
 
-        <form id="category_form" method="post" action="/rango/add_category/">
-            <!-- cross-site request forgery token
-                 for security; required by Django -->
-            {% csrf_token %}
+            <form id="page_form" method="post" action="/rango/category/{{ slug }}/add_page/">
+                <!-- cross-site request forgery token
+                     for security; required by Django -->
+                {% csrf_token %}
 
-            {% for field in form.visible_fields %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}
-            {% endfor %}
+                {% for field in form.visible_fields %}
+                    {{ field.errors }}
+                    {{ field.help_text }}
+                    {{ field }}
+                    <br/>
+                {% endfor %}
 
-            <input type="submit" name="submit" value="Create Page">
-        </form>
+                <input type="submit" name="submit" value="Create Page">
+            </form>
+        {% else %}
+            The category <b>{{ slug }}</b> does not exist yet!<br/>
+            You cannot add a new page to a category which doesn't exist.<br/>
+            Do you want to <a href="/rango/add_category/">create it</a>?
+        {% endif %}
     </body>
 
 </html>

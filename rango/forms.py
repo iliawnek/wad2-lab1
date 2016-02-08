@@ -4,9 +4,6 @@ from rango.models import *
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="category name")
-    # views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    # likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    # slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = Category
@@ -16,18 +13,17 @@ class CategoryForm(forms.ModelForm):
 class PageForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="page title")
     url = forms.URLField(help_text="URL")
-    # views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     class Meta:
         model = Page
-        exclude = ('category',)
+        fields = ('title', 'url')
 
-    def clean(self):
-        cleaned_data = self.cleaned_data
-        url = cleaned_data.get('url')
-
-        if url and (not url.startswith('http://') or not url.startswith('https://')):
-            url = 'http://' + url
-            cleaned_data['url'] = url
-
-        return cleaned_data
+    # def clean(self):
+    #     cleaned_data = self.cleaned_data
+    #     url = cleaned_data.get('url')
+    #
+    #     if url and (not url.startswith('http://') or not url.startswith('https://')):
+    #         url = 'http://' + url
+    #         cleaned_data['url'] = url
+    #
+    #     return cleaned_data
