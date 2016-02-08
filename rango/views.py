@@ -3,6 +3,7 @@ from string import *
 from django.shortcuts import render
 from django.http import HttpResponse
 from rango.models import *
+from rango.forms import *
 
 
 def index(request):
@@ -35,3 +36,22 @@ def category(request, category_name_slug):
         pass
 
     return render(request, 'rango/category.html', context_dict)
+
+
+def add_category(request):
+    context_dict = {}
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print form.errors
+
+    else:
+        form = CategoryForm()
+
+    context_dict['form'] = form
+    return render(request, 'rango/add_category.html', context_dict)
