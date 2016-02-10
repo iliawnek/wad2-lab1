@@ -25,9 +25,10 @@
                         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
                     {% endfor %}
                 </ul>
-                <a href="/rango/category/{{ slug }}/add_page/">Add a new page</a>
             {% else %}
                 There are no pages currently in this category.<br/><br/>
+            {% endif %}
+            {% if user.is_autheticated %}
                 <a href="/rango/category/{{ slug }}/add_page/">Add a new page</a>
             {% endif %}
         {% else %}
