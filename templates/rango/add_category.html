@@ -1,37 +1,23 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 
-<html lang="en">
+{% block title %}
+    Add category
+{% endblock %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            Rango → Add category
-        </title>
-    </head>
+{% block page_title %}
+    Add category
+{% endblock %}
 
-    <body>
-        <h1><a href="/rango/">Rango</a>
-                →
-                Add category
-        </h1>
+{% block body_block %}
+    <form id="category_form" method="post" action="/rango/add_category/">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field }}
+        {% endfor %}
+        <input type="submit" name="submit" value="Create category">
+    </form>
+{% endblock %}
 
-        <form id="category_form" method="post" action="/rango/add_category/">
-            <!-- cross-site request forgery token
-                 for security; required by Django -->
-            {% csrf_token %}
-
-{#            {% for field in form.hidden_fields %}#}
-{#                {{ hidden }}#}
-{#            {% endfor %}#}
-
-            {% for field in form.visible_fields %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}
-            {% endfor %}
-
-            <input type="submit" name="submit" value="Create Category">
-        </form>
-    </body>
-
-</html>
+{% block no_add_category_link %}{% endblock %}

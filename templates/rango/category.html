@@ -1,17 +1,18 @@
 {% extends 'rango/base.html' %}
 
 {% block title %}
-    {% if category %} → {{ category_name }}
-    {% else %} → Error!
+    {% if category %}
+        {{ category_name }}
+    {% else %}
+        Category does not exist!
     {% endif %}
 {% endblock %}
 
 {% block page_title %}
-    →
     {% if category %}
         {{ category_name }}
     {% else %}
-        Error!
+        Category does not exist!
     {% endif %}
 {% endblock %}
 
@@ -26,10 +27,11 @@
         {% else %}
             There are no pages currently in this category.<br/><br/>
         {% endif %}
-        {% if user.is_authenticated %}
-            <a href="{% url 'add_page' slug %}">Add a new page</a>
-        {% endif %}
     {% else %}
         The category <b>{{ slug }}</b> does not exist yet!<br/>
     {% endif %}
+{% endblock %}
+
+{% block logged_in_links %}
+    <li><a href="{% url 'add_page' slug %}">Add a new page</a></li>
 {% endblock %}

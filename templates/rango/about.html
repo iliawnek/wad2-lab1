@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+{% extends 'rango/base.html' %}
 
-<html lang="en">
+{% block title %}
+    About
+{% endblock %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Rango → About</title>
-    </head>
+{% block page_title %}
+    About
+{% endblock %}
 
-    <body>
-        <h1><a href="/rango/">Rango</a>
-            →
-            About
-        </h1>
-        <p>Rango is the best place to discover new stuff!</p>
-    </body>
+{% block body_block %}
+    Rango is the best place to discover new stuff!
+{% endblock %}
 
-</html>
+{% block no_about_link %}{% endblock %}

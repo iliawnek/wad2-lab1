@@ -1,31 +1,24 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 
-<html lang="en">
+{% block title %}
+    Register
+{% endblock %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Rango → Register</title>
-    </head>
+{% block page_title %}
+    Register
+{% endblock %}
 
-    <body>
-        {% if registered %}
-            <h1><a href="/rango/">Rango</a>
-                →
-                Registered!
-            </h1>
-            You are now registered!
-        {% else %}
-            <h1><a href="/rango/">Rango</a>
-                →
-                Register
-            </h1>
-            <form id="user_form" method="post" action="/rango/register/" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ user_form.as_p }}
-                {{ profile_form.as_p }}
-                <input type="submit" name="submit" value="Register"/>
-            </form>
-        {% endif %}
-    </body>
+{% block body_block %}
+    {% if registered %}
+        You are now registered!
+    {% else %}
+        <form id="user_form" method="post" action="/rango/register/" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" name="submit" value="Register"/>
+        </form>
+    {% endif %}
+{% endblock %}
 
-</html>
+{% block no_register_link %}{% endblock %}

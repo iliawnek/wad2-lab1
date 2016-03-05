@@ -3,14 +3,13 @@
 <html>
 
     <head>
-        <title>Rango{% block title %}{% endblock %}</title>
+        <title>Rango{% block no_title %} → {% block title %}{% endblock %}{% endblock %}</title>
     </head>
 
     <body>
         <div>
             <h1><a href="/rango/">Rango</a>
-                {% block page_title %}
-                {% endblock %}
+                {% block no_page_title %} → {% block page_title %}{% endblock %}{% endblock %}
             </h1>
         </div>
 
@@ -18,18 +17,28 @@
             {% block body_block %}{% endblock %}
         </div>
 
-        <hr />
+        <br/>
+        <hr/>
 
         <div>
             <ul>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'add_category' %}">Add a new category</a></li>
+                {% block logged_in_links %}{% endblock %}
+                {% block no_add_category_link %}
+                    <li><a href="{% url 'add_category' %}">Add a new category</a></li>
+                {% endblock %}
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
-                <li><a href="{% url 'register' %}">Register</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
+                {% block no_register_link %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endblock %}
+                {% block no_login_link %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endblock %}
             {% endif %}
-                <li><a href="{% url 'about' %}">About</a></li>
+                {% block no_about_link %}
+                    <li><a href="{% url 'about' %}">About</a></li>
+                {% endblock %}
                 <li><a href="/admin/">Admin</a></li><br/>
             </ul>
         </div>
