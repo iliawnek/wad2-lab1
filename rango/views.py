@@ -1,5 +1,6 @@
 from string import *
 
+from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -9,18 +10,46 @@ from rango.forms import *
 
 
 def index(request):
+    # getting popular categories
     context_dict = {}
-
     category_list_likes = Category.objects.order_by('-likes')#[:5]
     context_dict['categories_by_likes'] = category_list_likes
     category_list_views = Category.objects.order_by('-views')#[:5]
     context_dict['categories_by_views'] = category_list_views
 
-    return render(request, 'rango/index.html', context_dict)
+    visits = request.session.get('visits', 1)
+    context_dict['visits'] = visits
+
+    reset_last_visit_time = True
+
+    last_visit = request.session.get('last_visit')
+    if last_visit:
+        last_visit_time = datetime.strptime(last_visit[:-7], "%Y-%m-%d %H:%M:%S")
+
+        if (datetime.now() - last_visit_time).seconds > 3:
+            visits += 1
+        else:
+            reset_last_visit_time = False
+
+    if reset_last_visit_time:
+        request.session['last_visit'] = str(datetime.now())
+        request.session['visits'] = visits
+
+    response = render(request, 'rango/index.html', context_dict)
+
+    return response
 
 
 def about(request):
-    return render(request, 'rango/about.html')
+    context_dict = {}
+
+    visits = request.session.get('visits', 0)
+    if visits is not 1:
+        context_dict['is_plural'] = True
+
+    context_dict['visits'] = visits
+
+    return render(request, 'rango/about.html', context_dict)
 
 
 def category(request, category_name_slug):
