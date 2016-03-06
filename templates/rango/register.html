@@ -1,24 +1,24 @@
-{% extends 'rango/base.html' %}
-
-{% block title %}
-    Register
-{% endblock %}
-
-{% block page_title %}
-    Register
-{% endblock %}
-
-{% block body_block %}
-    {% if registered %}
-        You are now registered!
-    {% else %}
-        <form id="user_form" method="post" action="/rango/register/" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" name="submit" value="Register"/>
-        </form>
-    {% endif %}
-{% endblock %}
-
-{% block no_register_link %}{% endblock %}
+{#{% extends 'rango/base.html' %}#}
+{##}
+{#{% block title %}#}
+{#    Register#}
+{#{% endblock %}#}
+{##}
+{#{% block page_title %}#}
+{#    Register#}
+{#{% endblock %}#}
+{##}
+{#{% block body_block %}#}
+{#    {% if registered %}#}
+{#        You are now registered!#}
+{#    {% else %}#}
+{#        <form id="user_form" method="post" action="/rango/register/" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            {{ user_form.as_p }}#}
+{#            {{ profile_form.as_p }}#}
+{#            <input type="submit" name="submit" value="Register"/>#}
+{#        </form>#}
+{#    {% endif %}#}
+{#{% endblock %}#}
+{##}
+{#{% block no_register_link %}{% endblock %}#}

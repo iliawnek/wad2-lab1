@@ -1,22 +1,22 @@
-{% extends 'rango/base.html' %}
-
-{% block title %}
-    Login
-{% endblock %}
-
-{% block page_title %}
-    Login
-{% endblock %}
-
-{% block body_block %}
-    <form id="login_form" method="post" action="/rango/login/">
-        {% csrf_token %}
-        Username: <input type="text" name="username" value="" size="50"/>
-        <br/>
-        Password: <input type="password" name="password" value="" size="50"/>
-        <br/>
-        <input type="submit" value="Login"/>
-    </form>
-{% endblock %}
-
-{% block no_login_link %}{% endblock %}
+{#{% extends 'rango/base.html' %}#}
+{##}
+{#{% block title %}#}
+{#    Login#}
+{#{% endblock %}#}
+{##}
+{#{% block page_title %}#}
+{#    Login#}
+{#{% endblock %}#}
+{##}
+{#{% block body_block %}#}
+{#    <form id="login_form" method="post" action="/rango/login/">#}
+{#        {% csrf_token %}#}
+{#        Username: <input type="text" name="username" value="" size="50"/>#}
+{#        <br/>#}
+{#        Password: <input type="password" name="password" value="" size="50"/>#}
+{#        <br/>#}
+{#        <input type="submit" value="Login"/>#}
+{#    </form>#}
+{#{% endblock %}#}
+{##}
+{#{% block no_login_link %}{% endblock %}#}
