@@ -5,6 +5,7 @@ from django.conf import settings
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^rango/', include('rango.urls')),
+                       url(r'^accounts/', include('registration.backends.simple.urls'))
                        )
 
 if settings.DEBUG:
