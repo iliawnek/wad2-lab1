@@ -1,0 +1,20 @@
+{% extends 'rango/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block page_title %}
+    Login
+{% endblock %}
+
+{% block body_block %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login"/>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+{% endblock %}
+
+{% block no_login_link %}{% endblock %}
