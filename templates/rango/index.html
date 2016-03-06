@@ -4,10 +4,6 @@
 {% block no_page_title %}{% endblock %}
 
 {% block body_block %}
-    {% if user.is_authenticated %}
-        You are logged in as <b>{{ user.username }}</b>.<br/>
-    {% endif %}
-
     {% if categories_by_views %}
         <h3>Most Viewed Categories</h3>
         <ul>

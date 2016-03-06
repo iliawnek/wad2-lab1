@@ -14,6 +14,15 @@
         </div>
 
         <div>
+            {% if user.is_authenticated %}
+                You are currently logged in as <b>{{ user.username }}</b>.<br/>
+            {% endif %}
+        </div>
+
+        <br/>
+        <hr/>
+
+        <div>
             {% block body_block %}{% endblock %}
         </div>
 
@@ -27,7 +36,7 @@
                 {% block no_add_category_link %}
                     <li><a href="{% url 'add_category' %}">Add a new category</a></li>
                 {% endblock %}
-                <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                <li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
             {% else %}
                 {% block no_register_link %}
                     <li><a href="{% url 'registration_register' %}">Register</a></li>
