@@ -1,37 +1,37 @@
 {% extends 'rango/base.html' %}
 
 {% block title %}
-    {% if category %}
-        {{ category_name }}
-    {% else %}
-        Category does not exist!
-    {% endif %}
+  {% if category %}
+    {{ category_name }}
+  {% else %}
+    Category does not exist!
+  {% endif %}
 {% endblock %}
 
 {% block page_title %}
-    {% if category %}
-        {{ category_name }}
-    {% else %}
-        Category does not exist!
-    {% endif %}
+  {% if category %}
+    {{ category_name }}
+  {% else %}
+    Category does not exist!
+  {% endif %}
 {% endblock %}
 
 {% block body_block %}
-    {% if category %}
-        {% if pages %}
-            <ul>
-                {% for page in pages %}
-                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            There are no pages currently in this category.<br/><br/>
-        {% endif %}
+  {% if category %}
+    {% if pages %}
+      <ul>
+        {% for page in pages %}
+          <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+      </ul>
     {% else %}
-        The category <b>{{ slug }}</b> does not exist yet!<br/>
+      There are no pages currently in this category.<br/><br/>
     {% endif %}
+  {% else %}
+    The category <b>{{ slug }}</b> does not exist yet!<br/>
+  {% endif %}
 {% endblock %}
 
 {% block logged_in_links %}
-    <li><a href="{% url 'add_page' slug %}">Add a new page</a></li>
+  <li><a href="{% url 'add_page' slug %}">Add a new page</a></li>
 {% endblock %}

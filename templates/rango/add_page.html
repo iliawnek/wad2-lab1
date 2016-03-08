@@ -1,38 +1,38 @@
 {% extends 'rango/base.html' %}
 
 {% block title %}
-    {% if category %}
-        Add page to {{ category_name }}
-    {% else %}
-        Category does not exist!
-    {% endif %}
+  {% if category %}
+    Add page to {{ category_name }}
+  {% else %}
+    Category does not exist!
+  {% endif %}
 {% endblock %}
 
 {% block page_title %}
-    {% if category %}
+  {% if category %}
 
 
-        Add page to {{ category_name }}
-    {% else %}
-        Category does not exist!
-    {% endif %}
+    Add page to {{ category_name }}
+  {% else %}
+    Category does not exist!
+  {% endif %}
 {% endblock %}
 
 {% block body_block %}
-    {% if category %}
-        <form id="page_form" method="post" action="{% url 'add_page' slug %}">
-            {% csrf_token %}
-            {% for field in form.visible_fields %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}
-                <br/>
-            {% endfor %}
+  {% if category %}
+    <form id="page_form" method="post" action="{% url 'add_page' slug %}">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+        {{ field.errors }}
+        {{ field.help_text }}
+        {{ field }}
+        <br/>
+      {% endfor %}
 
-            <input type="submit" name="submit" value="Create page">
-        </form>
-    {% else %}
-        The category <b>{{ slug }}</b> does not exist yet!<br/>
-        You cannot add a new page to a category which does not exist.<br/>
-    {% endif %}
+      <input type="submit" name="submit" value="Create page">
+    </form>
+  {% else %}
+    The category <b>{{ slug }}</b> does not exist yet!<br/>
+    You cannot add a new page to a category which does not exist.<br/>
+  {% endif %}
 {% endblock %}

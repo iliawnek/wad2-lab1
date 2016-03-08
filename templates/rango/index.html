@@ -4,31 +4,31 @@
 {% block no_page_title %}{% endblock %}
 
 {% block body_block %}
-    {% if categories_by_views %}
-        <h3>Most Viewed Categories</h3>
-        <ul>
-            {% for category in categories_by_views %}
-                <li>
-                    <a href="/rango/category/{{ category.slug }}">
-                        {{ category.name }}</a>
-                    - {{ category.views }} views
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no categories present.</strong>
-    {% endif %}
+  {% if categories_by_views %}
+    <h3>Most Viewed Categories</h3>
+    <ul>
+      {% for category in categories_by_views %}
+        <li>
+          <a href="/rango/category/{{ category.slug }}">
+            {{ category.name }}</a>
+          - {{ category.views }} views
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <strong>There are no categories present.</strong>
+  {% endif %}
 
-    {% if categories_by_likes %}
-        <h3>Most Liked Categories</h3>
-        <ul>
-            {% for category in categories_by_likes %}
-                <li>
-                    <a href="/rango/category/{{ category.slug }}">
-                        {{ category.name }}</a>
-                    - {{ category.likes }} likes
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+  {% if categories_by_likes %}
+    <h3>Most Liked Categories</h3>
+    <ul>
+      {% for category in categories_by_likes %}
+        <li>
+          <a href="/rango/category/{{ category.slug }}">
+            {{ category.name }}</a>
+          - {{ category.likes }} likes
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endblock %}

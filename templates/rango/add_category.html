@@ -1,23 +1,23 @@
 {% extends 'rango/base.html' %}
 
 {% block title %}
-    Add category
+  Add category
 {% endblock %}
 
 {% block page_title %}
-    Add category
+  Add category
 {% endblock %}
 
 {% block body_block %}
-    <form id="category_form" method="post" action="/rango/add_category/">
-        {% csrf_token %}
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text }}
-            {{ field }}
-        {% endfor %}
-        <input type="submit" name="submit" value="Create category">
-    </form>
+  <form id="category_form" method="post" action="/rango/add_category/">
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+      {{ field.errors }}
+      {{ field.help_text }}
+      {{ field }}
+    {% endfor %}
+    <input type="submit" name="submit" value="Create category">
+  </form>
 {% endblock %}
 
 {% block no_add_category_link %}{% endblock %}
