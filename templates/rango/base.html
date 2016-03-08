@@ -36,6 +36,9 @@
                 {% block no_add_category_link %}
                     <li><a href="{% url 'add_category' %}">Add a new category</a></li>
                 {% endblock %}
+                {% block no_change_password_link %}
+                    <li><a href="{% url 'auth_password_change' %}">Change password</a></li>
+                {% endblock %}
                 <li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
             {% else %}
                 {% block no_register_link %}
